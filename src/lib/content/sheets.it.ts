@@ -6,4 +6,4 @@ import data from './sheets.it.json' with { type: 'json' };
 export const catalogue: Catalogue = data as Catalogue;
 
 /** Stored with every saved response, so answers can be read against the catalogue they came from. */
-export const CATALOGUE_VERSION = '2026-11-10';
+export const CATALOGUE_VERSION = '2026-11-12';

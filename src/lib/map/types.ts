@@ -57,7 +57,7 @@ export interface Facts {
 	holdings: Known<string[]>;
 	pac: Known<string>;
 	pac_amount: Known<Interval>;
-	chosen_by: Known<string>;
+	chosen_by: Known<string[]>;
 	costs_returns: Known<string>;
 	last_review: Known<string>;
 	purpose: Known<string>;

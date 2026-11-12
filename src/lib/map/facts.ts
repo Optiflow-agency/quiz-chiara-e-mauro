@@ -21,8 +21,10 @@ function readSingle(raw: unknown): Known<string> {
 }
 
 function readMulti(raw: unknown): Known<string[]> {
-	if (!Array.isArray(raw)) return MISSING;
-	const values = raw.filter((v): v is string => typeof v === 'string' && v !== '');
+	// A single string is an answer saved while the question allowed one choice (S12.chosen_by).
+	const list = typeof raw === 'string' ? [raw] : raw;
+	if (!Array.isArray(list)) return MISSING;
+	const values = list.filter((v): v is string => typeof v === 'string' && v !== '');
 	if (values.length === 0) return MISSING;
 	if (values.includes('unknown')) return { status: 'unknown' };
 	if (values.includes('withheld')) return { status: 'withheld' };
@@ -189,7 +191,7 @@ export function buildFacts(answers: MapAnswers, bands: BandSets): Facts {
 		holdings,
 		pac: single('S11', 'pac'),
 		pac_amount,
-		chosen_by: single('S12', 'chosen_by'),
+		chosen_by: multi('S12', 'chosen_by'),
 		costs_returns: single('S12', 'costs_returns'),
 		last_review: single('S12', 'last_review'),
 		purpose: single('S13', 'purpose'),

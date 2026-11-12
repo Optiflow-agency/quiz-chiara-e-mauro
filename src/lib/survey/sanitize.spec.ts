@@ -24,6 +24,20 @@ describe('sanitizeAnswers', () => {
 		expect(sanitizeAnswers(catalogue, answers)).toEqual(answers);
 	});
 
+	it('reads an investments answer saved while that question allowed one choice', () => {
+		// S12 is shown only to who invests.
+		const invests = { S10: { investments: 'yes' } };
+		expect(sanitizeAnswers(catalogue, { ...invests, S12: { chosen_by: 'bank' } })).toEqual({
+			...invests,
+			S12: { chosen_by: ['bank'] }
+		});
+		expect(sanitizePatch(catalogue, { S12: { chosen_by: 'self' } })).toEqual({
+			S12: { chosen_by: ['self'] }
+		});
+		const both = { ...invests, S12: { chosen_by: ['bank', 'advisor'] } };
+		expect(sanitizeAnswers(catalogue, both)).toEqual(both);
+	});
+
 	it('rejects anything that is not an object of objects of valid values', () => {
 		expect(sanitizeAnswers(catalogue, null)).toBeNull();
 		expect(sanitizeAnswers(catalogue, [])).toBeNull();

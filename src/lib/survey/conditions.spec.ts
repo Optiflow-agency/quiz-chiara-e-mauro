@@ -165,9 +165,10 @@ describe('the approved questionnaire branches', () => {
 			shown('S05', 'income_self', a),
 			shown('S05', 'income_household', a)
 		];
-		for (const marital of ['single', 'separated', 'widowed'])
+		for (const marital of ['single', 'separated', 'divorced', 'widowed'])
 			expect(wording({ S01: { marital } }), marital).toEqual([true, false]);
-		expect(wording({ S01: { marital: 'married' } })).toEqual([false, true]);
+		for (const marital of ['married', 'cohabiting', 'withheld'])
+			expect(wording({ S01: { marital } }), marital).toEqual([false, true]);
 		expect(wording({})).toEqual([false, true]);
 	});
 

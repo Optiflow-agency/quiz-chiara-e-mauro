@@ -64,7 +64,7 @@ export const PERSONAS: Persona[] = [
 			S09: { saving_habit: 'variable', saving_amount: '100_500' },
 			S10: { investments: 'mostly_account', holdings: ['savings_book', 'insurance', 'property'] },
 			S11: { pac: 'no' },
-			S12: { chosen_by: 'bank', costs_returns: 'neither', last_review: '3_5' },
+			S12: { chosen_by: ['bank'], costs_returns: 'neither', last_review: '3_5' },
 			S13: { purpose: 'vague' },
 			S14: { life_cover: 'tcm' },
 			S15: {
@@ -146,7 +146,7 @@ export const PERSONAS: Persona[] = [
 				holdings: ['funds', 'insurance', 'etf', 'govt_bonds', 'pension_fund', 'property']
 			},
 			S11: { pac: 'yes', pac_amount: '250_500' },
-			S12: { chosen_by: 'bank', costs_returns: 'returns_only', last_review: '5_10' },
+			S12: { chosen_by: ['bank'], costs_returns: 'returns_only', last_review: '5_10' },
 			S13: { purpose: 'vague' },
 			S14: { life_cover: 'other' },
 			S15: { pension_fund: 'open', tfr: 'fund', pension_sim: 'knows' },
@@ -252,7 +252,7 @@ export const PERSONAS: Persona[] = [
 			S09: { saving_habit: 'occasional', saving_amount: '100_500' },
 			S10: { investments: 'mostly_account', holdings: ['savings_book', 'govt_bonds', 'property'] },
 			S11: { pac: 'no' },
-			S12: { chosen_by: 'self', costs_returns: 'both', last_review: 'over_10' },
+			S12: { chosen_by: ['self'], costs_returns: 'both', last_review: 'over_10' },
 			S13: { purpose: 'no' },
 			S14: { life_cover: 'other' },
 			S15: { children_pension: 'unknown' },
@@ -309,7 +309,7 @@ export const PERSONAS: Persona[] = [
 				holdings: ['shares', 'etf', 'insurance', 'business_stakes', 'property']
 			},
 			S11: { pac: 'yes', pac_amount: '500_1000' },
-			S12: { chosen_by: 'advisor', costs_returns: 'costs_only', last_review: '1_3' },
+			S12: { chosen_by: ['advisor'], costs_returns: 'costs_only', last_review: '1_3' },
 			S13: { purpose: 'vague' },
 			S14: { life_cover: 'tcm' },
 			S15: { pension_fund: 'no', children_pension: 'fund_only', pension_sim: 'forgot' },

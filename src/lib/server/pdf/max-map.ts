@@ -89,7 +89,11 @@ export function buildMaxMap(): MapDocument {
 					(x) => x.toUpperCase()
 				),
 			reader: {
-				chosen: longest(Object.values(mapCopy.snapshot.chosen)),
+				// One way of choosing: two or more take a second line, which on a page 1 this full
+				// shortens the person's question there (it stays whole on page 4); see draw-map.spec.
+				chosen: fill(mapCopy.snapshot.chosen.sentence, {
+					how: longest(Object.values(mapCopy.snapshot.chosen.how))
+				}),
 				// Two 300-character answers would force a cut on page 1: the realistic maximum is a short
 				// aspect to improve and a full-length question.
 				improve: question.slice(0, 150).trim(),

@@ -139,7 +139,7 @@ Help: "Ci serve per leggere tutte le risposte successive nel modo giusto."
 - `age_band` [single, escapes: withheld] "Quanti anni hai?" (Q1)
   `18_25` = 18–25 anni · `26_35` = 26–35 anni · `36_45` = 36–45 anni · `46_55` = 46–55 anni · `56_65` = 56–65 anni · `over_65` = Oltre 65 anni
 - `marital` [single, escapes: withheld] "Qual è la tua situazione familiare?" (Q2)
-  `single` = Single · `married` = Sposato/a o convivente · `separated` = Separato/a o divorziato/a · `widowed` = Vedovo/a
+  `single` = Single · `married` = Sposato/a · `cohabiting` = Convivente · `separated` = Separato/a · `divorced` = Divorziato/a · `widowed` = Vedovo/a
 - `children` [single, escapes: withheld] "Hai figli?" (Q3)
   `no` = No · `one` = Sì, uno · `two` = Sì, due · `three_plus` = Sì, tre o più
 - `children_independent` [single, escapes: withheld] "I tuoi figli sono economicamente indipendenti?" (Q4)
@@ -166,7 +166,7 @@ Help: "Non chiediamo ancora cifre. Qui ci interessa solo capire da dove arrivano
 
 **S04. La tua attività**
 display_when: `BUSINESS`
-Prompt: "Il lavoro in proprio, visto dai soldi di casa."
+Prompt: "Come gestisci il denaro della tua attività"
 Help: "Niente cifre e niente conti dell'attività: ci interessa solo come il lavoro in proprio
 tocca i soldi di casa."
 
@@ -180,7 +180,7 @@ tocca i soldi di casa."
 ### Section B: Entrate e uscite
 
 **S05. Le entrate**
-Prompt: "Quanto entra in un mese normale."
+Prompt: "Le tue entrate mensili"
 Help: "Basta una fascia. Conta quello che arriva già tolte le tasse: stipendi, pensioni, affitti
 che ricevi, altre entrate regolari. Se cambia molto, pensa a un mese medio. Se lavori in
 proprio, conta quello che porti a casa, non il fatturato dell'attività."
@@ -205,7 +205,7 @@ scuola. Le rate di mutui e finanziamenti si contano a parte, più avanti."
 ### Section C: Imprevisti e rate
 
 **S07. La liquidità**
-Prompt: "I soldi che potresti usare subito."
+Prompt: "Liquidità disponibile"
 Help: "Conta solo quello che puoi usare da un giorno all'altro, senza vendere nulla e senza
 penali, come il conto corrente. Se lavori in proprio, conta solo i soldi personali, non quelli
 dell'attività."
@@ -226,7 +226,7 @@ Help: "Mutuo, prestiti, fidi: qui contano tutti. Non servono numeri di contratto
 ### Section D: Risparmi e investimenti
 
 **S09. Il risparmio**
-Prompt: "Quello che riesci a mettere da parte."
+Prompt: "La tua capacità di risparmiare"
 Help: "Conta tutto quello che resta da parte ogni mese, dovunque vada: conto, libretto, piani
 di accumulo."
 
@@ -261,7 +261,7 @@ Prompt: "Quanto conosci i tuoi investimenti."
 Help: "Non c'è una risposta giusta. Molte persone non hanno mai avuto queste informazioni in
 modo chiaro."
 
-- `chosen_by` [single, escapes: withheld] "Come hai scelto i tuoi investimenti?" (Q24)
+- `chosen_by` [multi, escapes: withheld] "Come hai scelto i tuoi investimenti?" (Q24), note "Puoi selezionare più risposte."
   `self` = Ho scelto autonomamente · `bank` = Mi sono affidato/a alla mia banca · `advisor` = Mi sono affidato/a a un consulente finanziario · `post_office` = Mi sono affidato/a a un consulente di Poste Italiane · `other` = Altro
 - `costs_returns` [single, escapes: withheld] "Conosci i costi e i rendimenti dei tuoi investimenti?" (Q25)
   `both` = Sì, conosco entrambi · `costs_only` = Conosco solo i costi · `returns_only` = Conosco solo i rendimenti · `neither` = Non conosco né i costi né i rendimenti
@@ -278,7 +278,7 @@ Help: "Pensa a tutto quello che hai messo da parte, sul conto e altrove."
 ### Section E: Protezione e futuro
 
 **S14. La protezione**
-Prompt: "Cosa succede se qualcosa va storto."
+Prompt: "Come proteggi te stesso e la tua famiglia"
 Help: "Non chiediamo nulla sulla salute. Ci interessa solo che cosa c'è già."
 
 - `life_cover` [single, escapes: unknown, withheld] "Hai una copertura assicurativa che protegga economicamente te e la tua famiglia in caso di prematura scomparsa o impossibilità di lavorare?" (Q28)
@@ -305,7 +305,7 @@ Può restare in azienda o andare a un fondo pensione."
 ### Section F: Patrimonio e famiglia
 
 **S16. Patrimonio e successione**
-Prompt: "Il tuo patrimonio e chi viene dopo."
+Prompt: "Il futuro del tuo patrimonio e dei tuoi eredi"
 Help: "Per patrimonio intendiamo tutto quello che possiedi: casa, altri immobili, risparmi,
 investimenti, quote di attività."
 
@@ -322,7 +322,7 @@ investimenti, quote di attività."
 ### Section G: Obiettivi e domande
 
 **S17. Gli obiettivi**
-Prompt: "Le cose per cui vorresti avere dei soldi."
+Prompt: "Obiettivi e progetti futuri"
 Help: "Servono a leggere tutto il resto: i soldi hanno senso rispetto a quello che vuoi farci."
 
 - `goals` [multi, escapes: withheld] "Quali sono i tuoi principali obiettivi finanziari per il tuo futuro?" (Q36)
@@ -529,7 +529,7 @@ reused, new rules take the next free number of their area.
 - Question: "Dove finisce quello che resta a fine mese?"
 - Never imply: how much should be saved.
 
-**IO-04** · tier 5 · strategia · `income_role == sole` AND `marital == married` AND `E` known
+**IO-04** · tier 5 · strategia · `income_role == sole` AND `marital` in [married, cohabiting] AND `E` known
 
 - "In una famiglia di due adulti il tuo reddito è l'unica entrata: le spese fisse, {fixed_eur}
   al mese, poggiano tutte su di te."
@@ -734,7 +734,7 @@ goes to SA-15, a weaker reading.
 - Question: "Quanto mi costano e quanto rendono, davvero, gli investimenti che ho?"
 - Never imply: that the costs are high or that anything should be changed.
 
-**SA-07** · tier 5 · strategia · `chosen_by` in [bank, post_office] AND `purpose` in [vague, no]
+**SA-07** · tier 5 · strategia · `chosen_by` includes any of [bank, post_office] AND `purpose` in [vague, no]
 
 - "Gli investimenti di oggi sono stati scelti affidandosi alla banca o alle Poste, e i
   risparmi non hanno ancora uno scopo preciso: manca il termine con cui confrontare quella
@@ -1061,11 +1061,11 @@ Draft documents carry a diagonal "BOZZA" mark on every page. Approved sentences 
      si riesce a mettere da parte nulla"; `no_quota` → "Una quota da mettere da parte non è
      ancora stata fissata".
 7. "Per chi legge la mappa con te": the investments' origin, then the person's own words.
-   - "{chosen_phrase}." chosen_by: self → "Gli investimenti di oggi sono stati scelti in
-     autonomia"; bank → "Gli investimenti di oggi sono stati scelti affidandosi alla banca";
-     advisor → "Gli investimenti di oggi sono stati scelti con un consulente finanziario";
-     post_office → "Gli investimenti di oggi sono stati scelti con un consulente di Poste
-     Italiane"; other or not shown → left out.
+   - "Gli investimenti di oggi sono stati scelti {how}." where `how` lists, in the order of
+     the question and joined by "e", each way named in `chosen_by`: self → "in autonomia";
+     bank → "affidandosi alla banca"; advisor → "con un consulente finanziario"; post_office →
+     "con un consulente di Poste Italiane". `other` has no wording; only other, or not shown →
+     left out.
    - "L'aspetto da migliorare: «{improve}»" (Q37, trimmed, cut at 300 characters).
    - "La domanda: «{question}»" (Q38, the same).
    - The block is left out when all three are empty.
@@ -1228,8 +1228,8 @@ For Mauro and Chiara (choices we made on the approved questionnaire):
 
 - Conditionals were not marked in the questionnaire; we set them as in section 3 (Q4, Q8-Q10,
   Q11 wording, Q17, Q19, Q23, Q24-Q26, Q29, Q30, Q31, Q32, Q35b, and some single options).
-- Q11 is asked in two wordings by Q2: "le tue entrate nette" (single, separated, widowed) or
-  "le entrate nette della tua famiglia" (married or cohabiting), because Q12 asks for the
+- Q11 is asked in two wordings by Q2: "le tue entrate nette" (single, separated, divorced,
+  widowed) or "le entrate nette della tua famiglia" (married, cohabiting, or Q2 not answered), because Q12 asks for the
   family's spending and the map compares the two.
 - Q12 bands overlapped (800-1.500 and 1.200-1.600) and skipped 2.500-5.000: fixed to
   <800 · 800-1.500 · 1.500-2.500 · 2.500-5.000 · >5.000.
@@ -1264,3 +1264,15 @@ For the map:
 - The liquidity bands start at "Meno di 10.000 €": for most households the reserve in months
   comes out wide ("fino a circa …"). The questionnaire is approved; noted for a future version.
 - All copy needs Mauro's and Chiara's review, then legal review of pages 1 and 4.
+
+Changes of 2026-11-12 (questionnaire 2026-11-12, rules 1.0.1), asked by the client:
+
+- Q2 splits "Sposato/a o convivente" and "Separato/a o divorziato/a" into four answers. The map
+  still says "Una coppia" for both married and cohabiting, "Una persona separata" and "Una
+  persona divorziata" for the others. Answers saved before keep their value (`married`,
+  `separated`) and read as "Sposato/a" and "Separato/a".
+- Q24 accepts several answers. Answers saved as a single choice are read as a one-item list.
+- Seven sheet prompts renamed (S04, S05, S07, S09, S14, S16, S17), without the final full stop.
+- IO-04 now also applies to `cohabiting` and SA-07 applies when bank or Poste is among the
+  answers: the conditions follow the split questions and the texts are unchanged, so both keep
+  `approved: true` by the client's decision (2026-11-12) instead of going back to draft.

@@ -56,8 +56,11 @@ export interface MapCopy {
 			/** The monthly saving sentence; `pac` is appended when the PAC share is known. */
 			saving: { amount: string; pac: string; cannot: string; no_quota: string };
 		};
-		/** "Gli investimenti di oggi sono stati scelti …", by the answer to `chosen_by`. */
-		chosen: Record<string, string>;
+		/**
+		 * "Gli investimenti di oggi sono stati scelti {how}.": `how` lists the ways named in
+		 * `chosen_by` (several are allowed); `other` has no wording and is left out.
+		 */
+		chosen: { sentence: string; how: Record<string, string> };
 	};
 }
 
@@ -343,6 +346,15 @@ function buildContext(facts: Facts, copy: MapCopy, w: Wording): string {
 		.join(c.separator);
 }
 
+/** How today's investments were chosen, in the order of the question; null when nothing to say. */
+function buildChosen(facts: Facts, copy: MapCopy, w: Wording): string | undefined {
+	const c = copy.snapshot.chosen;
+	const how = Object.keys(c.how)
+		.filter((k) => val(facts.chosen_by)?.includes(k))
+		.map((k) => c.how[k]);
+	return how.length > 0 ? fill(c.sentence, { how: w.list(how) }) : undefined;
+}
+
 /** "Le cose che contano per voi": the goals, then the monthly saving when it is known. */
 function buildGoals(facts: Facts, copy: MapCopy, w: Wording): string {
 	const g = copy.snapshot.goals;
@@ -401,7 +413,7 @@ export function buildMap(answers: MapAnswers, deps: MapDeps): MapDocument {
 	const highlights = selectHighlights(matches).map((m) => reading(m, copy));
 	const question = val(facts.question)?.slice(0, MAX_QUESTION);
 	const improve = val(facts.improve)?.slice(0, MAX_QUESTION);
-	const chosen = copy.snapshot.chosen[val(facts.chosen_by) ?? ''];
+	const chosen = buildChosen(facts, copy, w);
 	const printed = new Set(matches.map((m) => m.rule.id));
 
 	return {

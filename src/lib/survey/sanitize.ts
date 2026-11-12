@@ -40,6 +40,14 @@ function isChoice(field: CatalogueField & { type: 'single' | 'multi' }, value: s
 	);
 }
 
+/** Questions that went from one choice to several; answers saved before keep working. */
+const WERE_SINGLE = new Set(['S12.chosen_by']);
+
+/** An answer saved while `field` allowed one choice becomes a one-item list. */
+function upgrade(sheetId: string, field: CatalogueField, value: unknown): unknown {
+	return WERE_SINGLE.has(`${sheetId}.${field.id}`) && typeof value === 'string' ? [value] : value;
+}
+
 /**
  * Validates one sheet's values against the catalogue: fields the catalogue does not have are
  * dropped, an invalid value rejects the sheet (null).
@@ -51,8 +59,9 @@ function sanitizeSheet(catalogue: Catalogue, sheetId: string, values: unknown): 
 	for (const [fieldId, value] of Object.entries(values)) {
 		const field = fields.find((f) => f.id === fieldId);
 		if (!field) continue;
-		if (!isValid(catalogue, field, value)) return null;
-		setValue(kept, sheetId, fieldId, value);
+		const upgraded = upgrade(sheetId, field, value);
+		if (!isValid(catalogue, field, upgraded)) return null;
+		setValue(kept, sheetId, fieldId, upgraded);
 	}
 	return kept[sheetId] ?? {};
 }

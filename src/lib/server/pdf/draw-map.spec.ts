@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { mapCopy } from '../../content/map.it.ts';
 import { mapLayoutIt } from '../../content/map-layout.it.ts';
 import { catalogue } from '../../content/sheets.it.ts';
-import { buildMap } from '../../map/compose.ts';
+import { buildMap, fill } from '../../map/compose.ts';
 import { PERSONAS } from '../../map/personas.ts';
 import { RULES, TOPICS } from '../../map/rules.ts';
 import { drawMap, renderMap, type MapDeps } from './draw-map.ts';
@@ -43,6 +43,21 @@ describe('drawMap', () => {
 			expect(countPages(pdf)).toBe(4);
 		});
 	}
+
+	it('still fits four pages when the investments were chosen in every way', async () => {
+		const doc = buildMaxMap();
+		const how = Object.values(mapCopy.snapshot.chosen.how);
+		doc.snapshot.reader.chosen = fill(mapCopy.snapshot.chosen.sentence, {
+			how: `${how.slice(0, -1).join(', ')} e ${how.at(-1)}`
+		});
+		const { pages, pdf } = await renderMap(doc, deps);
+		expect(countPages(pdf)).toBe(4);
+		for (const page of pages) expect(page.fits).toBe(true);
+		// Page 1 may shorten the person's question; page 4 prints it whole.
+		expect(pages[3].printed.some((t) => t.includes(doc.snapshot.reader.question ?? '-'))).toBe(
+			true
+		);
+	});
 
 	it(`fits the realistic maximum on four pages with every sentence whole`, async () => {
 		const doc = buildMaxMap();

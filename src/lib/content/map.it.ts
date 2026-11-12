@@ -528,7 +528,9 @@ export const mapCopy: MapCopy = {
 			household: {
 				single: 'Una persona',
 				married: 'Una coppia',
-				separated: 'Una persona separata o divorziata',
+				cohabiting: 'Una coppia',
+				separated: 'Una persona separata',
+				divorced: 'Una persona divorziata',
 				widowed: 'Una persona vedova'
 			},
 			withChildren: ' con {children_phrase}',
@@ -565,10 +567,13 @@ export const mapCopy: MapCopy = {
 		},
 
 		chosen: {
-			self: 'Gli investimenti di oggi sono stati scelti in autonomia.',
-			bank: 'Gli investimenti di oggi sono stati scelti affidandosi alla banca.',
-			advisor: 'Gli investimenti di oggi sono stati scelti con un consulente finanziario.',
-			post_office: 'Gli investimenti di oggi sono stati scelti con un consulente di Poste Italiane.'
+			sentence: 'Gli investimenti di oggi sono stati scelti {how}.',
+			how: {
+				self: 'in autonomia',
+				bank: 'affidandosi alla banca',
+				advisor: 'con un consulente finanziario',
+				post_office: 'con un consulente di Poste Italiane'
+			}
 		}
 	}
 };

@@ -3,7 +3,7 @@ import { upperFirst } from './wording.ts';
 import type { AreaId, Facts, Fired, Known, Lens, Rule, Slots, Tier, Wording } from './types.ts';
 
 /** Bump on any change to a condition or a text, so a printed map says which rules built it. */
-export const RULES_VERSION = '1.0.0';
+export const RULES_VERSION = '1.0.1';
 
 /**
  * The sentence rules of `docs/map-spec.md` section 6, in document order (the order breaks ties
@@ -129,7 +129,7 @@ export const RULES: Rule[] = [
 	}),
 	rule('IO-04', 'IO', 'strategia', 5, ['income_role', 'marital', 'fixed'], (f, w) => {
 		const e = val(f.fixed);
-		return val(f.income_role) === 'sole' && val(f.marital) === 'married' && e
+		return val(f.income_role) === 'sole' && isIn(val(f.marital), ['married', 'cohabiting']) && e
 			? fire(undefined, { fixed_eur: w.eur(e) })
 			: null;
 	}),
@@ -312,7 +312,7 @@ export const RULES: Rule[] = [
 		return isIn(answer, ['costs_only', 'returns_only', 'neither']) ? fire(answer) : null;
 	}),
 	rule('SA-07', 'SA', 'strategia', 5, ['chosen_by', 'purpose'], (f) =>
-		isIn(val(f.chosen_by), ['bank', 'post_office']) && isIn(val(f.purpose), ['vague', 'no'])
+		hasAny(val(f.chosen_by), ['bank', 'post_office']) && isIn(val(f.purpose), ['vague', 'no'])
 			? fire(undefined)
 			: null
 	),

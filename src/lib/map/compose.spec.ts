@@ -317,6 +317,11 @@ describe('personas (spec section 9)', () => {
 		expect(context(8)).toBe(
 			"Una coppia con due figli · la tua è l'entrata principale · un'attività propria · casa di proprietà e altri immobili"
 		);
+		const household = (marital: string) => build({ S01: { marital } }).snapshot.context;
+		expect(household('cohabiting')).toBe('Una coppia');
+		expect(household('separated')).toBe('Una persona separata');
+		expect(household('divorced')).toBe('Una persona divorziata');
+		expect(household('withheld')).toBe('');
 		const mortgage = build({ S02: { property: 'both' }, S08: { debt_types: ['mortgage'] } });
 		expect(mortgage.snapshot.context).toBe('casa di proprietà con mutuo e altri immobili');
 		expect(build({ S03: { work: 'other' } }).snapshot.context).toBe('');
@@ -328,10 +333,17 @@ describe('personas (spec section 9)', () => {
 		expect(reader(PERSONAS[8].answers).chosen).toBe(
 			'Gli investimenti di oggi sono stati scelti con un consulente finanziario.'
 		);
+		expect(reader({ S12: { chosen_by: ['post_office'] } }).chosen).toBe(
+			'Gli investimenti di oggi sono stati scelti con un consulente di Poste Italiane.'
+		);
+		// Saved before the question allowed several answers: still read.
 		expect(reader({ S12: { chosen_by: 'post_office' } }).chosen).toBe(
 			'Gli investimenti di oggi sono stati scelti con un consulente di Poste Italiane.'
 		);
-		expect(reader({ S12: { chosen_by: 'other' } }).chosen).toBeNull();
+		expect(reader({ S12: { chosen_by: ['bank', 'self', 'other'] } }).chosen).toBe(
+			'Gli investimenti di oggi sono stati scelti in autonomia e affidandosi alla banca.'
+		);
+		expect(reader({ S12: { chosen_by: ['other'] } }).chosen).toBeNull();
 		expect(reader({ S18: { improve: ' Il mutuo ', question: 'Quando?' } })).toEqual({
 			chosen: null,
 			improve: 'Il mutuo',
@@ -450,6 +462,10 @@ describe('variants (first matching condition wins)', () => {
 	it('IO-04, IO-05 and IO-08', () => {
 		const married = io({ S01: { marital: 'married' }, S03: { income_role: 'sole' } });
 		expect(t(married, 'IO-04')).toContain('le spese fisse, tra 800 e 1.500 euro al mese,');
+		const together = io({ S01: { marital: 'cohabiting' }, S03: { income_role: 'sole' } });
+		expect(t(together, 'IO-04')).toContain('In una famiglia di due adulti');
+		const divorced = io({ S01: { marital: 'divorced' }, S03: { income_role: 'sole' } });
+		expect(t(divorced, 'IO-04')).toBe('');
 		expect(t(io({ S05: { income_self: 'unknown' } }), 'IO-05')).toContain(
 			'Manca la cifra delle entrate:'
 		);

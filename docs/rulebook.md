@@ -1,6 +1,6 @@
 # Libro delle regole della mappa
 
-Versione regole: 1.0.0. 50 regole.
+Versione regole: 1.0.1. 50 regole.
 
 Ogni testo qui sotto è un modello approvabile: le parti tra graffe vengono riempite dai valori calcolati.
 Se una regola ha più varianti, vale la prima la cui condizione è vera (l'ordine è quello della lista).

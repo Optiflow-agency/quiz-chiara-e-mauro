@@ -245,11 +245,19 @@
 						},
 						{
 							"value": "married",
-							"label": "Sposato/a o convivente"
+							"label": "Sposato/a"
+						},
+						{
+							"value": "cohabiting",
+							"label": "Convivente"
 						},
 						{
 							"value": "separated",
-							"label": "Separato/a o divorziato/a"
+							"label": "Separato/a"
+						},
+						{
+							"value": "divorced",
+							"label": "Divorziato/a"
 						},
 						{
 							"value": "widowed",
@@ -412,7 +420,7 @@
 		{
 			"id": "S04",
 			"section": "Per cominciare",
-			"prompt": "Il lavoro in proprio, visto dai soldi di casa.",
+			"prompt": "Come gestisci il denaro della tua attività",
 			"display_when": "S03.work in [professional,entrepreneur,self_employed]",
 			"fields": [
 				{
@@ -484,21 +492,21 @@
 		{
 			"id": "S05",
 			"section": "Entrate e uscite",
-			"prompt": "Quanto entra in un mese normale.",
+			"prompt": "Le tue entrate mensili",
 			"display_when": "always",
 			"fields": [
 				{
 					"id": "income_self",
 					"label": "In un mese normale, a quanto ammontano complessivamente le tue entrate nette?",
 					"type": "band",
-					"display_when": "S01.marital in [single,separated,widowed]",
+					"display_when": "S01.marital in [single,separated,divorced,widowed]",
 					"band_set": "income_monthly"
 				},
 				{
 					"id": "income_household",
 					"label": "In un mese normale, a quanto ammontano complessivamente le entrate nette della tua famiglia?",
 					"type": "band",
-					"display_when": "S01.marital in [married,withheld] OR S01.marital missing",
+					"display_when": "S01.marital in [married,cohabiting,withheld] OR S01.marital missing",
 					"note": "Le tue e quelle di chi condivide con te le spese.",
 					"band_set": "income_monthly"
 				}
@@ -545,7 +553,7 @@
 		{
 			"id": "S07",
 			"section": "Imprevisti e rate",
-			"prompt": "I soldi che potresti usare subito.",
+			"prompt": "Liquidità disponibile",
 			"display_when": "always",
 			"fields": [
 				{
@@ -644,7 +652,7 @@
 		{
 			"id": "S09",
 			"section": "Risparmi e investimenti",
-			"prompt": "Quello che riesci a mettere da parte.",
+			"prompt": "La tua capacità di risparmiare",
 			"display_when": "always",
 			"fields": [
 				{
@@ -825,8 +833,9 @@
 				{
 					"id": "chosen_by",
 					"label": "Come hai scelto i tuoi investimenti?",
-					"type": "single",
+					"type": "multi",
 					"display_when": "always",
+					"note": "Puoi selezionare più risposte.",
 					"options": [
 						{
 							"value": "self",
@@ -941,7 +950,7 @@
 		{
 			"id": "S14",
 			"section": "Protezione e futuro",
-			"prompt": "Cosa succede se qualcosa va storto.",
+			"prompt": "Come proteggi te stesso e la tua famiglia",
 			"display_when": "always",
 			"fields": [
 				{
@@ -1084,7 +1093,7 @@
 		{
 			"id": "S16",
 			"section": "Patrimonio e famiglia",
-			"prompt": "Il tuo patrimonio e chi viene dopo.",
+			"prompt": "Il futuro del tuo patrimonio e dei tuoi eredi",
 			"display_when": "always",
 			"fields": [
 				{
@@ -1202,7 +1211,7 @@
 		{
 			"id": "S17",
 			"section": "Obiettivi e domande",
-			"prompt": "Le cose per cui vorresti avere dei soldi.",
+			"prompt": "Obiettivi e progetti futuri",
 			"display_when": "always",
 			"fields": [
 				{
