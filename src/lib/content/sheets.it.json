@@ -1,0 +1,1290 @@
+{
+	"amountBandSets": {
+		"income_monthly": [
+			{
+				"value": "lt_1500",
+				"label": "Meno di 1.500 €",
+				"lo": 0,
+				"hi": 1500
+			},
+			{
+				"value": "1500_2500",
+				"label": "Tra 1.500 e 2.500 €",
+				"lo": 1500,
+				"hi": 2500
+			},
+			{
+				"value": "2500_5000",
+				"label": "Tra 2.500 e 5.000 €",
+				"lo": 2500,
+				"hi": 5000
+			},
+			{
+				"value": "5000_10000",
+				"label": "Tra 5.000 e 10.000 €",
+				"lo": 5000,
+				"hi": 10000
+			},
+			{
+				"value": "10000_25000",
+				"label": "Tra 10.000 e 25.000 €",
+				"lo": 10000,
+				"hi": 25000
+			},
+			{
+				"value": "gt_25000",
+				"label": "Più di 25.000 €",
+				"lo": 25000,
+				"hi": null
+			}
+		],
+		"fixed_monthly": [
+			{
+				"value": "lt_800",
+				"label": "Meno di 800 €",
+				"lo": 0,
+				"hi": 800
+			},
+			{
+				"value": "800_1500",
+				"label": "Tra 800 e 1.500 €",
+				"lo": 800,
+				"hi": 1500
+			},
+			{
+				"value": "1500_2500",
+				"label": "Tra 1.500 e 2.500 €",
+				"lo": 1500,
+				"hi": 2500
+			},
+			{
+				"value": "2500_5000",
+				"label": "Tra 2.500 e 5.000 €",
+				"lo": 2500,
+				"hi": 5000
+			},
+			{
+				"value": "gt_5000",
+				"label": "Più di 5.000 €",
+				"lo": 5000,
+				"hi": null
+			}
+		],
+		"instalments_monthly": [
+			{
+				"value": "lt_1000",
+				"label": "Meno di 1.000 €",
+				"lo": 0,
+				"hi": 1000
+			},
+			{
+				"value": "1000_1500",
+				"label": "Tra 1.000 e 1.500 €",
+				"lo": 1000,
+				"hi": 1500
+			},
+			{
+				"value": "1500_2500",
+				"label": "Tra 1.500 e 2.500 €",
+				"lo": 1500,
+				"hi": 2500
+			},
+			{
+				"value": "gt_2500",
+				"label": "Più di 2.500 €",
+				"lo": 2500,
+				"hi": null
+			}
+		],
+		"liquidity": [
+			{
+				"value": "lt_10000",
+				"label": "Meno di 10.000 €",
+				"lo": 0,
+				"hi": 10000
+			},
+			{
+				"value": "10000_50000",
+				"label": "Tra 10.000 e 50.000 €",
+				"lo": 10000,
+				"hi": 50000
+			},
+			{
+				"value": "50000_150000",
+				"label": "Tra 50.000 e 150.000 €",
+				"lo": 50000,
+				"hi": 150000
+			},
+			{
+				"value": "150000_300000",
+				"label": "Tra 150.000 e 300.000 €",
+				"lo": 150000,
+				"hi": 300000
+			},
+			{
+				"value": "gt_300000",
+				"label": "Più di 300.000 €",
+				"lo": 300000,
+				"hi": null
+			}
+		],
+		"saving_monthly": [
+			{
+				"value": "lt_100",
+				"label": "Meno di 100 €",
+				"lo": 0,
+				"hi": 100
+			},
+			{
+				"value": "100_500",
+				"label": "Tra 100 e 500 €",
+				"lo": 100,
+				"hi": 500
+			},
+			{
+				"value": "500_1000",
+				"label": "Tra 500 e 1.000 €",
+				"lo": 500,
+				"hi": 1000
+			},
+			{
+				"value": "1000_2000",
+				"label": "Tra 1.000 e 2.000 €",
+				"lo": 1000,
+				"hi": 2000
+			},
+			{
+				"value": "gt_2000",
+				"label": "Oltre 2.000 €",
+				"lo": 2000,
+				"hi": null
+			}
+		],
+		"pac_monthly": [
+			{
+				"value": "lt_100",
+				"label": "Meno di 100 €",
+				"lo": 0,
+				"hi": 100
+			},
+			{
+				"value": "100_250",
+				"label": "Tra 100 e 250 €",
+				"lo": 100,
+				"hi": 250
+			},
+			{
+				"value": "250_500",
+				"label": "Tra 250 e 500 €",
+				"lo": 250,
+				"hi": 500
+			},
+			{
+				"value": "500_1000",
+				"label": "Tra 500 e 1.000 €",
+				"lo": 500,
+				"hi": 1000
+			},
+			{
+				"value": "gt_1000",
+				"label": "Oltre 1.000 €",
+				"lo": 1000,
+				"hi": null
+			}
+		]
+	},
+	"sheets": [
+		{
+			"id": "S01",
+			"section": "Per cominciare",
+			"prompt": "Partiamo da te e dalla tua famiglia.",
+			"display_when": "always",
+			"fields": [
+				{
+					"id": "age_band",
+					"label": "Quanti anni hai?",
+					"type": "single",
+					"display_when": "always",
+					"options": [
+						{
+							"value": "18_25",
+							"label": "18–25 anni"
+						},
+						{
+							"value": "26_35",
+							"label": "26–35 anni"
+						},
+						{
+							"value": "36_45",
+							"label": "36–45 anni"
+						},
+						{
+							"value": "46_55",
+							"label": "46–55 anni"
+						},
+						{
+							"value": "56_65",
+							"label": "56–65 anni"
+						},
+						{
+							"value": "over_65",
+							"label": "Oltre 65 anni"
+						}
+					],
+					"escapes": ["withheld"]
+				},
+				{
+					"id": "marital",
+					"label": "Qual è la tua situazione familiare?",
+					"type": "single",
+					"display_when": "always",
+					"options": [
+						{
+							"value": "single",
+							"label": "Single"
+						},
+						{
+							"value": "married",
+							"label": "Sposato/a o convivente"
+						},
+						{
+							"value": "separated",
+							"label": "Separato/a o divorziato/a"
+						},
+						{
+							"value": "widowed",
+							"label": "Vedovo/a"
+						}
+					],
+					"escapes": ["withheld"]
+				},
+				{
+					"id": "children",
+					"label": "Hai figli?",
+					"type": "single",
+					"display_when": "always",
+					"options": [
+						{
+							"value": "no",
+							"label": "No"
+						},
+						{
+							"value": "one",
+							"label": "Sì, uno"
+						},
+						{
+							"value": "two",
+							"label": "Sì, due"
+						},
+						{
+							"value": "three_plus",
+							"label": "Sì, tre o più"
+						}
+					],
+					"escapes": ["withheld"]
+				},
+				{
+					"id": "children_independent",
+					"label": "I tuoi figli sono economicamente indipendenti?",
+					"type": "single",
+					"display_when": "S01.children in [one,two,three_plus]",
+					"options": [
+						{
+							"value": "all",
+							"label": "Sì, tutti"
+						},
+						{
+							"value": "some",
+							"label": "Solo alcuni",
+							"display_when": "S01.children in [two,three_plus]"
+						},
+						{
+							"value": "none",
+							"label": "No, dipendono ancora economicamente da me"
+						}
+					],
+					"escapes": ["withheld"]
+				}
+			],
+			"help": "Ci serve per leggere tutte le risposte successive nel modo giusto."
+		},
+		{
+			"id": "S02",
+			"section": "Per cominciare",
+			"prompt": "La casa e gli immobili.",
+			"display_when": "always",
+			"fields": [
+				{
+					"id": "property",
+					"label": "Hai immobili di proprietà?",
+					"type": "single",
+					"display_when": "always",
+					"options": [
+						{
+							"value": "main_home",
+							"label": "Sì, la prima casa"
+						},
+						{
+							"value": "other_only",
+							"label": "Sì, una seconda casa o immobili a reddito"
+						},
+						{
+							"value": "both",
+							"label": "Sì, sia la prima casa sia altri immobili"
+						},
+						{
+							"value": "none",
+							"label": "No"
+						}
+					],
+					"escapes": ["withheld"]
+				}
+			],
+			"help": "Conta anche gli immobili posseduti solo in parte."
+		},
+		{
+			"id": "S03",
+			"section": "Per cominciare",
+			"prompt": "Il tuo lavoro e il tuo reddito.",
+			"display_when": "always",
+			"fields": [
+				{
+					"id": "work",
+					"label": "Che attività lavorativa svolgi attualmente?",
+					"type": "single",
+					"display_when": "always",
+					"options": [
+						{
+							"value": "employee",
+							"label": "Lavoratore dipendente"
+						},
+						{
+							"value": "professional",
+							"label": "Libero professionista"
+						},
+						{
+							"value": "entrepreneur",
+							"label": "Imprenditore / Titolare d’azienda"
+						},
+						{
+							"value": "self_employed",
+							"label": "Lavoratore autonomo"
+						},
+						{
+							"value": "retired",
+							"label": "Pensionato"
+						},
+						{
+							"value": "other",
+							"label": "Altro"
+						}
+					],
+					"escapes": ["withheld"]
+				},
+				{
+					"id": "income_role",
+					"label": "Il tuo reddito rappresenta la principale fonte di sostentamento della tua famiglia?",
+					"type": "single",
+					"display_when": "always",
+					"options": [
+						{
+							"value": "sole",
+							"label": "Sì, sono l’unica fonte di reddito"
+						},
+						{
+							"value": "main",
+							"label": "Sì, rappresenta la fonte principale"
+						},
+						{
+							"value": "shared",
+							"label": "No, il reddito familiare è distribuito tra più persone"
+						},
+						{
+							"value": "secondary",
+							"label": "No, il mio reddito è secondario"
+						}
+					],
+					"escapes": ["withheld"]
+				}
+			],
+			"help": "Non chiediamo ancora cifre. Qui ci interessa solo capire da dove arrivano le entrate."
+		},
+		{
+			"id": "S04",
+			"section": "Per cominciare",
+			"prompt": "Il lavoro in proprio, visto dai soldi di casa.",
+			"display_when": "S03.work in [professional,entrepreneur,self_employed]",
+			"fields": [
+				{
+					"id": "separate_accounts",
+					"label": "I soldi dell’attività e quelli personali sono gestiti attraverso conti separati?",
+					"type": "single",
+					"display_when": "always",
+					"options": [
+						{
+							"value": "yes",
+							"label": "Sì, sempre"
+						},
+						{
+							"value": "partly",
+							"label": "In parte"
+						},
+						{
+							"value": "no",
+							"label": "No, vengono gestiti insieme"
+						}
+					],
+					"escapes": ["withheld"]
+				},
+				{
+					"id": "tax_reserve",
+					"label": "Quando devi pagare tasse e contributi (saldo e acconti), accantoni periodicamente le somme necessarie?",
+					"type": "single",
+					"display_when": "always",
+					"options": [
+						{
+							"value": "regular",
+							"label": "Sì, con regolarità"
+						},
+						{
+							"value": "irregular",
+							"label": "Sì, ma non sempre con regolarità"
+						},
+						{
+							"value": "struggle",
+							"label": "No, faccio fatica a pianificare queste uscite"
+						}
+					],
+					"escapes": ["withheld"]
+				},
+				{
+					"id": "owner_dependency",
+					"label": "Se non potessi lavorare per qualche mese, cosa succederebbe alla tua attività?",
+					"type": "single",
+					"display_when": "always",
+					"options": [
+						{
+							"value": "continues",
+							"label": "Andrebbe avanti regolarmente anche senza di me"
+						},
+						{
+							"value": "slows",
+							"label": "Andrebbe avanti, ma con una riduzione delle entrate"
+						},
+						{
+							"value": "stops",
+							"label": "Si fermerebbe"
+						}
+					],
+					"escapes": ["withheld"]
+				}
+			],
+			"help": "Niente cifre e niente conti dell’attività: ci interessa solo come il lavoro in proprio tocca i soldi di casa."
+		},
+		{
+			"id": "S05",
+			"section": "Entrate e uscite",
+			"prompt": "Quanto entra in un mese normale.",
+			"display_when": "always",
+			"fields": [
+				{
+					"id": "income_self",
+					"label": "In un mese normale, a quanto ammontano complessivamente le tue entrate nette?",
+					"type": "band",
+					"display_when": "S01.marital in [single,separated,widowed]",
+					"band_set": "income_monthly"
+				},
+				{
+					"id": "income_household",
+					"label": "In un mese normale, a quanto ammontano complessivamente le entrate nette della tua famiglia?",
+					"type": "band",
+					"display_when": "S01.marital in [married,withheld] OR S01.marital missing",
+					"note": "Le tue e quelle di chi condivide con te le spese.",
+					"band_set": "income_monthly"
+				}
+			],
+			"help": "Basta una fascia. Conta quello che arriva già tolte le tasse: stipendi, pensioni, affitti che ricevi, altre entrate regolari. Se cambia molto, pensa a un mese medio. Se lavori in proprio, conta quello che porti a casa, non il fatturato dell’attività."
+		},
+		{
+			"id": "S06",
+			"section": "Entrate e uscite",
+			"prompt": "Le spese di tutti i mesi.",
+			"display_when": "always",
+			"fields": [
+				{
+					"id": "fixed",
+					"label": "A quanto ammontano mediamente le spese fisse mensili della tua famiglia, escluse le rate di mutui e finanziamenti?",
+					"type": "band",
+					"display_when": "always",
+					"band_set": "fixed_monthly"
+				},
+				{
+					"id": "tracking",
+					"label": "Tieni traccia delle entrate e delle uscite?",
+					"type": "single",
+					"display_when": "always",
+					"options": [
+						{
+							"value": "regular",
+							"label": "Sì, con regolarità"
+						},
+						{
+							"value": "sometimes",
+							"label": "Ogni tanto"
+						},
+						{
+							"value": "no",
+							"label": "No, mi regolo a sensazione"
+						}
+					],
+					"escapes": ["withheld"]
+				}
+			],
+			"help": "Le spese fisse sono quelle che arrivano comunque: affitto, bollette, spesa, trasporti, scuola. Le rate di mutui e finanziamenti si contano a parte, più avanti."
+		},
+		{
+			"id": "S07",
+			"section": "Imprevisti e rate",
+			"prompt": "I soldi che potresti usare subito.",
+			"display_when": "always",
+			"fields": [
+				{
+					"id": "liquidity",
+					"label": "Quanta liquidità hai attualmente a disposizione, immediatamente utilizzabile?",
+					"type": "band",
+					"display_when": "always",
+					"band_set": "liquidity"
+				},
+				{
+					"id": "emergency",
+					"label": "Se domani dovessi affrontare un imprevisto economico importante, avresti liquidità sufficiente?",
+					"type": "single",
+					"display_when": "always",
+					"options": [
+						{
+							"value": "adequate",
+							"label": "Sì, ho una riserva adeguata"
+						},
+						{
+							"value": "probably_yes",
+							"label": "Probabilmente sì"
+						},
+						{
+							"value": "probably_no",
+							"label": "Probabilmente no"
+						},
+						{
+							"value": "sell_investments",
+							"label": "No, dovrei utilizzare o vendere i miei investimenti"
+						},
+						{
+							"value": "never_assessed",
+							"label": "Non ho mai valutato questo aspetto"
+						}
+					],
+					"escapes": ["withheld"]
+				}
+			],
+			"help": "Conta solo quello che puoi usare da un giorno all’altro, senza vendere nulla e senza penali, come il conto corrente. Se lavori in proprio, conta solo i soldi personali, non quelli dell’attività."
+		},
+		{
+			"id": "S08",
+			"section": "Imprevisti e rate",
+			"prompt": "Le rate e i finanziamenti in corso.",
+			"display_when": "always",
+			"fields": [
+				{
+					"id": "debt_types",
+					"label": "Quali di questi impegni finanziari hai attualmente in corso?",
+					"type": "multi",
+					"display_when": "always",
+					"options": [
+						{
+							"value": "mortgage",
+							"label": "Mutuo per la casa"
+						},
+						{
+							"value": "car",
+							"label": "Finanziamento per auto o moto"
+						},
+						{
+							"value": "personal_loan",
+							"label": "Prestito personale"
+						},
+						{
+							"value": "salary_loan",
+							"label": "Cessione del quinto"
+						},
+						{
+							"value": "overdraft",
+							"label": "Fido bancario"
+						},
+						{
+							"value": "none",
+							"label": "Nessuno",
+							"exclusive": true
+						},
+						{
+							"value": "other",
+							"label": "Altro"
+						}
+					],
+					"escapes": ["withheld"]
+				},
+				{
+					"id": "instalments",
+					"label": "Complessivamente, quanto paghi di rate ogni mese?",
+					"type": "band",
+					"display_when": "S08.debt_types includes [mortgage,car,personal_loan,salary_loan,overdraft,other]",
+					"band_set": "instalments_monthly"
+				}
+			],
+			"help": "Mutuo, prestiti, fidi: qui contano tutti. Non servono numeri di contratto."
+		},
+		{
+			"id": "S09",
+			"section": "Risparmi e investimenti",
+			"prompt": "Quello che riesci a mettere da parte.",
+			"display_when": "always",
+			"fields": [
+				{
+					"id": "saving_habit",
+					"label": "Riesci a mettere da parte regolarmente una quota del tuo reddito?",
+					"type": "single",
+					"display_when": "always",
+					"options": [
+						{
+							"value": "monthly",
+							"label": "Sì, tutti i mesi"
+						},
+						{
+							"value": "variable",
+							"label": "Sì, ma in maniera variabile"
+						},
+						{
+							"value": "occasional",
+							"label": "Solo occasionalmente"
+						},
+						{
+							"value": "cannot",
+							"label": "No, attualmente non riesco a risparmiare"
+						},
+						{
+							"value": "no_quota",
+							"label": "Non ho mai definito una quota di risparmio"
+						}
+					],
+					"escapes": ["withheld"]
+				},
+				{
+					"id": "saving_amount",
+					"label": "Quanto riesci mediamente ad accantonare ogni mese?",
+					"type": "band",
+					"display_when": "S09.saving_habit in [monthly,variable,occasional,no_quota]",
+					"band_set": "saving_monthly"
+				}
+			],
+			"help": "Conta tutto quello che resta da parte ogni mese, dovunque vada: conto, libretto, piani di accumulo."
+		},
+		{
+			"id": "S10",
+			"section": "Risparmi e investimenti",
+			"prompt": "Dove sono i tuoi risparmi.",
+			"display_when": "always",
+			"fields": [
+				{
+					"id": "investments",
+					"label": "Attualmente possiedi investimenti finanziari?",
+					"type": "single",
+					"display_when": "always",
+					"options": [
+						{
+							"value": "yes",
+							"label": "Sì"
+						},
+						{
+							"value": "mostly_account",
+							"label": "Sì, ma tengo prevalentemente i miei risparmi sul conto corrente"
+						},
+						{
+							"value": "no",
+							"label": "No"
+						}
+					],
+					"escapes": ["withheld"]
+				},
+				{
+					"id": "holdings",
+					"label": "Quali di questi prodotti o strumenti finanziari e patrimoniali possiedi attualmente?",
+					"type": "multi",
+					"display_when": "always",
+					"note": "Puoi selezionare più risposte.",
+					"options": [
+						{
+							"value": "savings_book",
+							"label": "Libretto di risparmio"
+						},
+						{
+							"value": "deposit",
+							"label": "Conto deposito"
+						},
+						{
+							"value": "govt_bonds",
+							"label": "BTP e altri titoli di Stato"
+						},
+						{
+							"value": "bonds",
+							"label": "Obbligazioni"
+						},
+						{
+							"value": "shares",
+							"label": "Azioni"
+						},
+						{
+							"value": "etf",
+							"label": "ETF"
+						},
+						{
+							"value": "funds",
+							"label": "Fondi comuni di investimento"
+						},
+						{
+							"value": "pension_fund",
+							"label": "Fondo pensione o PIP"
+						},
+						{
+							"value": "insurance",
+							"label": "Polizze assicurative finanziarie o di investimento"
+						},
+						{
+							"value": "property",
+							"label": "Immobili di proprietà"
+						},
+						{
+							"value": "business_stakes",
+							"label": "Partecipazioni societarie o quote di aziende"
+						},
+						{
+							"value": "crypto",
+							"label": "Criptovalute e altri strumenti digitali"
+						},
+						{
+							"value": "other",
+							"label": "Altri strumenti finanziari o patrimoniali"
+						},
+						{
+							"value": "none",
+							"label": "Nessuno di questi",
+							"exclusive": true
+						}
+					],
+					"escapes": ["withheld"]
+				}
+			],
+			"help": "Ci interessa il tipo di strumento, non il nome del prodotto."
+		},
+		{
+			"id": "S11",
+			"section": "Risparmi e investimenti",
+			"prompt": "I piani di accumulo.",
+			"display_when": "always",
+			"fields": [
+				{
+					"id": "pac",
+					"label": "Hai attualmente uno o più piani di accumulo (PAC)?",
+					"type": "single",
+					"display_when": "always",
+					"options": [
+						{
+							"value": "yes",
+							"label": "Sì"
+						},
+						{
+							"value": "no",
+							"label": "No"
+						}
+					],
+					"escapes": ["withheld"]
+				},
+				{
+					"id": "pac_amount",
+					"label": "Quanto versi mediamente al mese?",
+					"type": "band",
+					"display_when": "S11.pac == yes",
+					"band_set": "pac_monthly"
+				}
+			],
+			"help": "Un piano di accumulo (PAC) è un versamento periodico, di solito mensile, in uno strumento di investimento."
+		},
+		{
+			"id": "S12",
+			"section": "Risparmi e investimenti",
+			"prompt": "Quanto conosci i tuoi investimenti.",
+			"display_when": "S10.investments in [yes,mostly_account]",
+			"fields": [
+				{
+					"id": "chosen_by",
+					"label": "Come hai scelto i tuoi investimenti?",
+					"type": "single",
+					"display_when": "always",
+					"options": [
+						{
+							"value": "self",
+							"label": "Ho scelto autonomamente"
+						},
+						{
+							"value": "bank",
+							"label": "Mi sono affidato/a alla mia banca"
+						},
+						{
+							"value": "advisor",
+							"label": "Mi sono affidato/a a un consulente finanziario"
+						},
+						{
+							"value": "post_office",
+							"label": "Mi sono affidato/a a un consulente di Poste Italiane"
+						},
+						{
+							"value": "other",
+							"label": "Altro"
+						}
+					],
+					"escapes": ["withheld"]
+				},
+				{
+					"id": "costs_returns",
+					"label": "Conosci i costi e i rendimenti dei tuoi investimenti?",
+					"type": "single",
+					"display_when": "always",
+					"options": [
+						{
+							"value": "both",
+							"label": "Sì, conosco entrambi"
+						},
+						{
+							"value": "costs_only",
+							"label": "Conosco solo i costi"
+						},
+						{
+							"value": "returns_only",
+							"label": "Conosco solo i rendimenti"
+						},
+						{
+							"value": "neither",
+							"label": "Non conosco né i costi né i rendimenti"
+						}
+					],
+					"escapes": ["withheld"]
+				},
+				{
+					"id": "last_review",
+					"label": "Da quanto tempo hai sottoscritto o modificato i tuoi investimenti attuali?",
+					"type": "single",
+					"display_when": "always",
+					"options": [
+						{
+							"value": "lt_1",
+							"label": "Meno di 1 anno"
+						},
+						{
+							"value": "1_3",
+							"label": "Da 1 a 3 anni"
+						},
+						{
+							"value": "3_5",
+							"label": "Da 3 a 5 anni"
+						},
+						{
+							"value": "5_10",
+							"label": "Da 5 a 10 anni"
+						},
+						{
+							"value": "over_10",
+							"label": "Oltre 10 anni"
+						}
+					],
+					"escapes": ["unknown", "withheld"]
+				}
+			],
+			"help": "Non c’è una risposta giusta. Molte persone non hanno mai avuto queste informazioni in modo chiaro."
+		},
+		{
+			"id": "S13",
+			"section": "Risparmi e investimenti",
+			"prompt": "A cosa servono i tuoi risparmi.",
+			"display_when": "always",
+			"fields": [
+				{
+					"id": "purpose",
+					"label": "I tuoi risparmi hanno uno scopo preciso?",
+					"type": "single",
+					"display_when": "always",
+					"options": [
+						{
+							"value": "yes",
+							"label": "Sì, so esattamente a cosa sono destinati"
+						},
+						{
+							"value": "vague",
+							"label": "Più o meno, ho degli obiettivi ma non sono ancora definiti"
+						},
+						{
+							"value": "no",
+							"label": "No, non ho ancora individuato uno scopo preciso"
+						}
+					],
+					"escapes": ["withheld"]
+				}
+			],
+			"help": "Pensa a tutto quello che hai messo da parte, sul conto e altrove."
+		},
+		{
+			"id": "S14",
+			"section": "Protezione e futuro",
+			"prompt": "Cosa succede se qualcosa va storto.",
+			"display_when": "always",
+			"fields": [
+				{
+					"id": "life_cover",
+					"label": "Hai una copertura assicurativa che protegga economicamente te e la tua famiglia in caso di prematura scomparsa o impossibilità di lavorare?",
+					"type": "single",
+					"display_when": "always",
+					"options": [
+						{
+							"value": "tcm",
+							"label": "Sì, una polizza temporanea caso morte (TCM)"
+						},
+						{
+							"value": "disability",
+							"label": "Sì, una copertura per invalidità o inabilità lavorativa"
+						},
+						{
+							"value": "both",
+							"label": "Sì, entrambe"
+						},
+						{
+							"value": "other",
+							"label": "Ho altre coperture assicurative"
+						},
+						{
+							"value": "none",
+							"label": "No, non ho alcuna tutela"
+						}
+					],
+					"escapes": ["unknown", "withheld"]
+				}
+			],
+			"help": "Non chiediamo nulla sulla salute. Ci interessa solo che cosa c’è già."
+		},
+		{
+			"id": "S15",
+			"section": "Protezione e futuro",
+			"prompt": "La pensione, vista da oggi.",
+			"display_when": "always",
+			"fields": [
+				{
+					"id": "pension_fund",
+					"label": "Hai già aderito a un fondo pensione?",
+					"type": "single",
+					"display_when": "S03.work != retired",
+					"options": [
+						{
+							"value": "category",
+							"label": "Sì, a un fondo pensione di categoria"
+						},
+						{
+							"value": "open",
+							"label": "Sì, a un fondo pensione aperto"
+						},
+						{
+							"value": "pip",
+							"label": "Sì, a un PIP (Piano Individuale Pensionistico)"
+						},
+						{
+							"value": "no",
+							"label": "No"
+						},
+						{
+							"value": "unsure_type",
+							"label": "Non so esattamente quale tipologia possiedo"
+						}
+					],
+					"escapes": ["withheld"]
+				},
+				{
+					"id": "tfr",
+					"label": "Dove viene destinato il tuo TFR?",
+					"type": "single",
+					"display_when": "S03.work == employee",
+					"options": [
+						{
+							"value": "company",
+							"label": "Rimane in azienda"
+						},
+						{
+							"value": "fund",
+							"label": "Viene versato a un fondo pensione"
+						}
+					],
+					"escapes": ["unknown", "withheld"]
+				},
+				{
+					"id": "children_pension",
+					"label": "Hai verificato se i tuoi figli possiedono una posizione previdenziale o un piano di risparmio?",
+					"type": "single",
+					"display_when": "S01.children in [one,two,three_plus]",
+					"options": [
+						{
+							"value": "fund_only",
+							"label": "Hanno un fondo pensione, ma non un piano di accumulo"
+						},
+						{
+							"value": "pac_only",
+							"label": "Hanno un piano di accumulo, ma non un fondo pensione"
+						},
+						{
+							"value": "both",
+							"label": "Hanno entrambi"
+						},
+						{
+							"value": "neither",
+							"label": "Non hanno né l’uno né l’altro"
+						}
+					],
+					"escapes": ["unknown", "withheld"]
+				},
+				{
+					"id": "pension_sim",
+					"label": "Hai mai fatto una simulazione per capire quale potrebbe essere il tuo reddito pensionistico futuro?",
+					"type": "single",
+					"display_when": "S03.work != retired",
+					"options": [
+						{
+							"value": "knows",
+							"label": "Sì, conosco la mia possibile pensione"
+						},
+						{
+							"value": "forgot",
+							"label": "Sì, ma non ricordo i risultati"
+						},
+						{
+							"value": "never",
+							"label": "No, non ho mai fatto una simulazione"
+						},
+						{
+							"value": "where_start",
+							"label": "Non so da dove iniziare"
+						}
+					],
+					"escapes": ["withheld"]
+				}
+			],
+			"help": "Il TFR è la liquidazione: una parte dello stipendio che viene messa da parte ogni mese. Può restare in azienda o andare a un fondo pensione."
+		},
+		{
+			"id": "S16",
+			"section": "Patrimonio e famiglia",
+			"prompt": "Il tuo patrimonio e chi viene dopo.",
+			"display_when": "always",
+			"fields": [
+				{
+					"id": "wealth_estimate",
+					"label": "Se oggi decidessi di vendere tutto ciò che possiedi, sapresti stimare il valore complessivo del tuo patrimonio?",
+					"type": "single",
+					"display_when": "always",
+					"options": [
+						{
+							"value": "precise",
+							"label": "Sì, con precisione"
+						},
+						{
+							"value": "unsure",
+							"label": "Sì, ma non sono completamente sicuro/a"
+						},
+						{
+							"value": "roughly",
+							"label": "Più o meno"
+						},
+						{
+							"value": "no",
+							"label": "No"
+						}
+					],
+					"escapes": ["withheld"]
+				},
+				{
+					"id": "heirs",
+					"label": "Sapresti indicare chi sono i tuoi eredi?",
+					"type": "single",
+					"display_when": "always",
+					"options": [
+						{
+							"value": "all",
+							"label": "Sì, conosco tutti i miei eredi"
+						},
+						{
+							"value": "some",
+							"label": "Conosco solo alcuni dei miei possibili eredi"
+						},
+						{
+							"value": "not_sure",
+							"label": "No, non saprei indicarli con certezza"
+						},
+						{
+							"value": "never_looked",
+							"label": "Non ho mai approfondito l’argomento"
+						}
+					],
+					"escapes": ["withheld"]
+				},
+				{
+					"id": "succession",
+					"label": "Hai mai pensato concretamente a come trasferire il tuo patrimonio ai tuoi eredi in vita?",
+					"type": "single",
+					"display_when": "always",
+					"options": [
+						{
+							"value": "planned",
+							"label": "Sì, ho già pianificato la successione"
+						},
+						{
+							"value": "thought",
+							"label": "Sì, ci ho pensato ma non ho ancora fatto nulla"
+						},
+						{
+							"value": "no",
+							"label": "No, non ho mai affrontato l’argomento"
+						},
+						{
+							"value": "later",
+							"label": "Penso sia un tema da affrontare più avanti"
+						}
+					],
+					"escapes": ["withheld"]
+				},
+				{
+					"id": "succession_reason",
+					"label": "Qual è il motivo principale?",
+					"type": "single",
+					"display_when": "S16.succession in [no,later]",
+					"options": [
+						{
+							"value": "too_small",
+							"label": "Ritengo di avere un patrimonio ancora troppo basso"
+						},
+						{
+							"value": "future",
+							"label": "Penso sia un argomento da affrontare in futuro",
+							"display_when": "S16.succession == no"
+						},
+						{
+							"value": "unaware",
+							"label": "Non conosco le possibilità di pianificazione successoria"
+						},
+						{
+							"value": "by_law",
+							"label": "Penso che la successione venga gestita automaticamente dalla legge"
+						},
+						{
+							"value": "not_priority",
+							"label": "Non ritengo sia una mia priorità"
+						},
+						{
+							"value": "other",
+							"label": "Altro"
+						}
+					],
+					"escapes": ["withheld"]
+				}
+			],
+			"help": "Per patrimonio intendiamo tutto quello che possiedi: casa, altri immobili, risparmi, investimenti, quote di attività."
+		},
+		{
+			"id": "S17",
+			"section": "Obiettivi e domande",
+			"prompt": "Le cose per cui vorresti avere dei soldi.",
+			"display_when": "always",
+			"fields": [
+				{
+					"id": "goals",
+					"label": "Quali sono i tuoi principali obiettivi finanziari per il tuo futuro?",
+					"type": "multi",
+					"display_when": "always",
+					"note": "Puoi selezionare più risposte.",
+					"options": [
+						{
+							"value": "buy_home",
+							"label": "Acquistare una casa"
+						},
+						{
+							"value": "mortgage",
+							"label": "Estinguere o ridurre un mutuo"
+						},
+						{
+							"value": "capital",
+							"label": "Accumulare un capitale"
+						},
+						{
+							"value": "grow_wealth",
+							"label": "Aumentare il patrimonio"
+						},
+						{
+							"value": "extra_income",
+							"label": "Costruire una rendita integrativa"
+						},
+						{
+							"value": "retirement",
+							"label": "Prepararmi alla pensione"
+						},
+						{
+							"value": "children",
+							"label": "Garantire un futuro economico ai miei figli",
+							"display_when": "S01.children in [one,two,three_plus]"
+						},
+						{
+							"value": "protect",
+							"label": "Proteggere il patrimonio familiare"
+						},
+						{
+							"value": "handover",
+							"label": "Pianificare il passaggio generazionale"
+						},
+						{
+							"value": "freedom",
+							"label": "Avere maggiore libertà finanziaria"
+						},
+						{
+							"value": "other",
+							"label": "Altro"
+						}
+					],
+					"escapes": ["withheld"]
+				}
+			],
+			"help": "Servono a leggere tutto il resto: i soldi hanno senso rispetto a quello che vuoi farci."
+		},
+		{
+			"id": "S18",
+			"section": "Obiettivi e domande",
+			"prompt": "Due domande aperte.",
+			"display_when": "always",
+			"fields": [
+				{
+					"id": "improve",
+					"label": "Se potessi migliorare un solo aspetto della tua attuale situazione finanziaria, quale sceglieresti?",
+					"type": "textarea",
+					"display_when": "always",
+					"max_length": 300
+				},
+				{
+					"id": "question",
+					"label": "C’è una domanda che vorresti fare o un argomento che vorresti approfondire?",
+					"type": "textarea",
+					"display_when": "always",
+					"max_length": 300
+				}
+			],
+			"help": "Sono facoltative. Non scrivere nomi di altre persone, numeri di conto o informazioni sulla salute."
+		}
+	]
+}

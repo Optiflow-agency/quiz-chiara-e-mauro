@@ -1,0 +1,109 @@
+@import 'tailwindcss';
+@plugin '@tailwindcss/forms';
+
+/* Design tokens mirror the event website (mauroechiaralive.com). */
+:root {
+	--navy: #0b2545;
+	--navy-deep: #071a33;
+	--navy-2: #13335e;
+	--blue: #1e6fe8;
+	--blue-dark: #1558b8;
+	--accent-on-dark: #6fa3ff;
+	--ice: #eaf1fb;
+	--line: #e1e6ed;
+	--muted: #5b6b7f;
+	--muted-on-dark: #a7bbd6;
+	--text-on-dark: #dce6f5;
+	--error: #c53030;
+	--error-on-dark: #ffb3b3;
+
+	--font-display: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
+	--font-body: 'Lato', 'Helvetica Neue', Arial, sans-serif;
+
+	--gutter: clamp(20px, 5vw, 40px);
+	--radius-field: 12px;
+	--radius-card: 16px;
+	--ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+
+	--grid: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='96' height='96'%3E%3Cpath d='M0 48.5h96M48.5 0v96' stroke='%23fff' stroke-opacity='.06'/%3E%3Cpath d='M42 48.5h13M48.5 42v13' stroke='%231E6FE8' stroke-opacity='.7'/%3E%3C/svg%3E");
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+html {
+	-webkit-text-size-adjust: 100%;
+	scrollbar-color: var(--blue) var(--navy-deep);
+}
+
+body {
+	margin: 0;
+	font-family: var(--font-body);
+	font-size: 17px;
+	line-height: 1.6;
+	color: var(--navy);
+	background: var(--navy-deep);
+}
+
+h1,
+h2,
+h3 {
+	margin: 0;
+	font-family: var(--font-display);
+	letter-spacing: -0.02em;
+	text-wrap: balance;
+}
+
+p {
+	margin: 0;
+}
+
+::selection {
+	background: var(--blue);
+	color: #fff;
+}
+
+:focus-visible {
+	outline: 2px solid var(--blue);
+	outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto;
+	}
+	*,
+	*::before,
+	*::after {
+		transition-duration: 0.01ms !important;
+		animation-duration: 0.01ms !important;
+	}
+}
+
+/* Pill button with trailing arrow icon, as on the event site (the arrow disc is deprecated). */
+.btn {
+	display: inline-flex;
+	align-items: center;
+	gap: 12px;
+	padding: 16px 28px;
+	border: 1px solid var(--blue);
+	border-radius: 999px;
+	background: var(--blue);
+	color: #fff;
+	font: 700 16px/1 var(--font-body);
+	cursor: pointer;
+	transition:
+		background 0.2s,
+		border-color 0.2s;
+}
+.btn:hover:not(:disabled) {
+	background: var(--blue-dark);
+	border-color: var(--blue-dark);
+}
+.btn:disabled {
+	opacity: 0.55;
+	cursor: not-allowed;
+}

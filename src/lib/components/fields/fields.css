@@ -1,0 +1,107 @@
+/* Shared look of the catalogue field components (global, f- prefixed). */
+.f-field {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr);
+	gap: 10px;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	min-width: 0;
+}
+.f-field:focus {
+	outline: none;
+}
+.f-label {
+	padding: 0;
+	font-size: 16px;
+	font-weight: 700;
+}
+.f-hint {
+	font-size: 14px;
+	color: var(--muted);
+}
+.f-error {
+	font-size: 14px;
+	font-weight: 700;
+	color: var(--error);
+}
+.f-option {
+	position: relative;
+	display: flex;
+	align-items: center;
+	gap: 14px;
+	padding: 14px 18px;
+	border: 1.5px solid var(--line);
+	border-radius: var(--radius-field);
+	background: #fff;
+	cursor: pointer;
+	transition:
+		border-color 0.15s,
+		background 0.15s;
+}
+.f-option:hover {
+	border-color: #b9c6d8;
+}
+.f-option.is-selected {
+	border-color: var(--blue);
+	background: var(--ice);
+}
+.f-option:has(input:focus-visible) {
+	outline: 2px solid var(--blue);
+	outline-offset: 3px;
+}
+.f-option input {
+	position: absolute;
+	opacity: 0;
+	inset: 0;
+	margin: 0;
+	cursor: pointer;
+}
+.f-mark {
+	display: grid;
+	place-items: center;
+	flex: none;
+	width: 22px;
+	height: 22px;
+	border: 1.5px solid #9fb0c6;
+	border-radius: 6px;
+	color: #fff;
+	background: #fff;
+}
+.f-mark.is-round {
+	border-radius: 50%;
+}
+.is-selected .f-mark {
+	border-color: var(--blue);
+	background: var(--blue);
+}
+.f-textarea {
+	width: 100%;
+	padding: 14px 16px;
+	border: 1.5px solid var(--line);
+	border-radius: var(--radius-field);
+	font: inherit;
+	color: var(--navy);
+	resize: vertical;
+}
+.f-textarea:focus {
+	border-color: var(--blue);
+	box-shadow: 0 0 0 3px rgba(30, 111, 232, 0.15);
+	outline: none;
+}
+.f-link {
+	justify-self: start;
+	padding: 0;
+	border: 0;
+	background: none;
+	color: var(--blue-dark);
+	font: 700 15px var(--font-body);
+	text-decoration: underline;
+	text-underline-offset: 3px;
+	cursor: pointer;
+}
+.f-link:disabled {
+	color: var(--muted);
+	cursor: not-allowed;
+	text-decoration: none;
+}
