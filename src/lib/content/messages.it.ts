@@ -89,8 +89,18 @@ export const messages = {
 		pageTitle: 'Grazie · Guadagnare non basta+',
 		title: 'Grazie, ',
 		accent: 'a presto',
-		body: 'Abbiamo ricevuto le tue risposte. La tua mappa sarà pronta all’evento. Serve a orientare una conversazione, non è una consulenza: ogni indicazione sulla tua situazione potrà arrivare solo da un consulente, in un colloquio diretto.',
-		profile: 'Vai al tuo profilo'
+		body: 'Abbiamo ricevuto le tue risposte.',
+		delivery: 'La tua mappa finanziaria ti verrà consegnata ',
+		deliveryAccent: 'all’evento',
+		notAdvice:
+			'Serve a orientare una conversazione, non è una consulenza: ogni indicazione sulla tua situazione potrà arrivare solo da un consulente, in un colloquio diretto.',
+		profile: 'Vai al tuo profilo',
+		countdown: {
+			kicker: 'Ci vediamo all’evento',
+			when: 'Sabato 21 novembre · ore 15:00',
+			units: { days: 'giorni', hours: 'ore', minutes: 'minuti', seconds: 'secondi' },
+			live: 'L’evento è iniziato: ti aspettiamo.'
+		}
 	},
 	profile: {
 		pageTitle: 'Il tuo profilo · Guadagnare non basta+',
@@ -115,6 +125,8 @@ export const messages = {
 			codeLabel: 'Codice a 6 cifre',
 			codeInvalid: 'Inserisci le 6 cifre del codice.',
 			verify: 'Conferma il codice',
+			checking: 'Verifichiamo il codice…',
+			verified: 'Codice verificato',
 			wrongCode: 'Il codice non è corretto o è scaduto.',
 			expired: 'Il codice è scaduto. Richiedine uno nuovo.',
 			resend: 'Invia un nuovo codice',

@@ -3,6 +3,8 @@
 	import { untrack } from 'svelte';
 	import { page } from '$app/state';
 	import { env } from '$env/dynamic/public';
+	import { prefersReducedMotion } from 'svelte/motion';
+	import CodeCheck, { ERROR_MS, LOCK_MS, SUCCESS_MS, type Phase } from './CodeCheck.svelte';
 	import EmailField from './EmailField.svelte';
 	import Icon from './Icon.svelte';
 	import Turnstile from './Turnstile.svelte';
@@ -64,7 +66,41 @@
 			};
 		};
 	}
+
+	/** The code being checked, shown full screen while the server verifies it. */
+	let checking = $state<{ digits: string; phase: Phase } | null>(null);
+	const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+
+	/**
+	 * The verify form: the request runs while the digits lock, so the animation never delays a
+	 * slow answer by more than its own length. A success floods the screen before the redirect,
+	 * a wrong code shakes and hands back to the form with its error.
+	 */
+	const verifySubmit: SubmitFunction = ({ cancel }) => {
+		attempted = true;
+		if (!codeValid) return cancel();
+		pending = true;
+		const reduced = prefersReducedMotion.current;
+		checking = { digits: code.replace(/\s+/g, ''), phase: 'checking' };
+		const locked = wait(reduced ? 300 : LOCK_MS);
+		return async ({ result, update }) => {
+			await locked;
+			const ok = result.type === 'redirect' || result.type === 'success';
+			if (checking) checking.phase = ok ? 'success' : 'error';
+			await wait(ok ? (reduced ? 250 : SUCCESS_MS) : reduced ? 200 : ERROR_MS);
+			if (!ok) checking = null;
+			await update({ reset: false });
+			checking = null;
+			pending = false;
+			code = '';
+			attempted = false;
+		};
+	};
 </script>
+
+{#if checking}
+	<CodeCheck digits={checking.digits} phase={checking.phase} />
+{/if}
 
 {#snippet failure()}
 	{#if errorText}
@@ -76,7 +112,7 @@
 	<p class="intro sent" role="status">{s.codeSent(codeEmail)}</p>
 	<p class="spam">{s.spamHint}</p>
 	{@render failure()}
-	<form method="POST" action="?/verify" novalidate use:enhance={track(() => codeValid)}>
+	<form method="POST" action="?/verify" novalidate use:enhance={verifySubmit}>
 		<label class="field">
 			<span class="field__label">{s.codeLabel}</span>
 			<input
