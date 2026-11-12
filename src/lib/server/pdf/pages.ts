@@ -217,10 +217,10 @@ export const summaryPage: PageBody = (ctx, d) => {
 	}
 
 	// The map, and the four numbers beside it.
-	atlas(ctx, d, X, y, GRID.wide, ATLAS_H);
+	const atlasH = atlas(ctx, d, X, y, GRID.wide, ATLAS_H);
 	let ny = y;
 	s.numbers.forEach((n) => (ny += figureCell(ctx, n.label, n.value, ny)));
-	y += ATLAS_H + 4;
+	y += atlasH + 4;
 	const caption = { ...small(ctx), size: Math.min(8, ctx.fit.body), color: COLOR.muted };
 	y += text(ctx, copy.atlas.caption, X, y, GRID.wide, caption);
 	y = Math.max(y, ny) + big;

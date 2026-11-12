@@ -13,7 +13,7 @@ import { COLOR } from './theme.ts';
 const RING: NodeId[] = ['OB', 'IO', 'RI', 'DE', 'SA', 'PR', 'PE'];
 const NODE_R = 9;
 const HUB_R = 21;
-const LABEL_W = 92;
+const LABEL_W = 100;
 const CONTOURS = { chiara: 3, in_parte: 2, da_ricostruire: 1, non_compilata: 0 };
 /**
  * Where along its line, from its own area, each highlight's number sits: near the area it belongs
@@ -61,19 +61,30 @@ function pointOn(a: Point, k: Point, b: Point, t: number): Point {
 	};
 }
 
-/** Draws the map in the box and returns its height. */
+/**
+ * Draws the map in the box and returns the height it takes: the box, or more when a label below
+ * a lower place runs past it (a long area title on two lines), so what follows starts below.
+ */
 export function atlas(ctx: Ctx, d: MapDocument, x: number, y: number, w: number, h: number) {
-	if (ctx.dry) return h;
-	const { pdf, copy } = ctx;
+	const { copy } = ctx;
 	const c = { x: x + w / 2, y: y + h / 2 };
 	const rx = w / 2 - LABEL_W / 2 - 4;
-	const ry = h / 2 - 30;
+	const ry = h / 2 - 36;
 	const at = new Map<NodeId, Point>([['VOI', c]]);
 	RING.forEach((id, i) => {
 		const a = -Math.PI / 2 + (i * 2 * Math.PI) / RING.length;
 		at.set(id, { x: c.x + rx * Math.cos(a), y: c.y + ry * Math.sin(a) });
 	});
 	const pos = (id: NodeId) => at.get(id)!;
+	const stateOf = (area: MapDocument['areas'][number]) =>
+		area.notApplicable ? copy.atlas.notApplicable : copy.clarity[area.clarity];
+	const measure = { ...ctx, dry: true };
+	const bottom = Math.max(
+		y + h,
+		...d.areas.map((area) => label(measure, pos(area.id), c, area.title, stateOf(area)))
+	);
+	if (ctx.dry) return bottom - y;
+	const { pdf } = ctx;
 	const line = (a: NodeId, b: NodeId) => {
 		const [p, q] = [pos(a), pos(b)];
 		return { p, k: control(p, q, c, a === 'VOI' || b === 'VOI'), q };
@@ -157,8 +168,7 @@ export function atlas(ctx: Ctx, d: MapDocument, x: number, y: number, w: number,
 		const p = pos(area.id);
 		pdf.circle(p.x, p.y, NODE_R + 2).fill(COLOR.paper);
 		clarityShape(ctx, area.notApplicable ? 'non_compilata' : area.clarity, p.x, p.y, NODE_R);
-		const state = area.notApplicable ? copy.atlas.notApplicable : copy.clarity[area.clarity];
-		label(ctx, p, c, area.title, state);
+		label(ctx, p, c, area.title, stateOf(area));
 	}
 
 	// Numbers last, so nothing covers them: on the highlight's first line, or beside its area.
@@ -169,11 +179,14 @@ export function atlas(ctx: Ctx, d: MapDocument, x: number, y: number, w: number,
 				{ x: pos(r.area).x + 13, y: pos(r.area).y + (pos(r.area).y < c.y - 1 ? 11 : -11) };
 		badge(ctx, i + 1, spot.x, spot.y);
 	});
-	return h;
+	return bottom - y;
 }
 
-/** Title and state of a place, above it in the upper half of the map and below in the lower. */
-function label(ctx: Ctx, p: Point, c: Point, title: string, state: string) {
+/**
+ * Title and state of a place, above it in the upper half of the map and below in the lower.
+ * Returns where the label ends (in a dry run it only measures).
+ */
+function label(ctx: Ctx, p: Point, c: Point, title: string, state: string): number {
 	const titleStyle = { font: 'heading', size: 8, color: COLOR.navy, align: 'center' } as const;
 	const stateStyle = { font: 'body', size: 7.5, color: COLOR.muted, align: 'center' } as const;
 	const measure = { ...ctx, dry: true };
@@ -183,4 +196,5 @@ function label(ctx: Ctx, p: Point, c: Point, title: string, state: string) {
 	const top = p.y < c.y - 1 ? p.y - NODE_R - 5 - th - sh : p.y + NODE_R + 5;
 	text(ctx, title, lx, top, LABEL_W, titleStyle);
 	if (state) text(ctx, state, lx, top + th, LABEL_W, stateStyle);
+	return top + th + sh;
 }
