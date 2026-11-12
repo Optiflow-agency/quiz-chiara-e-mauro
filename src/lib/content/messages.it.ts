@@ -72,7 +72,9 @@ export const messages = {
 	},
 	securityCheck: {
 		unavailable:
-			'Non riusciamo a eseguire il controllo di sicurezza. Ricarica la pagina e riprova.',
+			'Non riusciamo a completare il controllo di sicurezza: la connessione sembra instabile.',
+		retry: 'Riprova',
+		checking: 'Un momento, completiamo un controllo di sicurezza…',
 		failed: 'Il controllo di sicurezza non è andato a buon fine. Riprova.'
 	},
 	end: {
