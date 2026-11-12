@@ -429,7 +429,8 @@ const SECTIONS: [id: string, title: string, body: string][] = [
 		`<p>Dove il questionario approvato non bastava a costruire le schede o la mappa, abbiamo deciso così. Chiediamo a Mauro e Chiara di confermare.</p>
 		<ul>
 			<li>Le condizioni di comparsa non erano indicate nel questionario: le abbiamo impostate come mostrano le schede qui sotto (domande Q4, Q8-Q10, Q11, Q17, Q19, Q23-Q26, Q29-Q32, Q35b e alcune singole risposte).</li>
-			<li>Q11 (entrate) ha due formulazioni, scelte in base alla risposta a Q2: “le tue entrate nette” (single, separato, vedovo) o “le entrate nette della tua famiglia” (sposato o convivente), perché Q12 chiede le spese della famiglia e la mappa confronta le due cifre.</li>
+			<li>Q11 (entrate) ha due formulazioni, scelte in base alla risposta a Q2: “le tue entrate nette” (single, separato, divorziato, vedovo) o “le entrate nette della tua famiglia” (sposato, convivente, o Q2 senza risposta), perché Q12 chiede le spese della famiglia e la mappa confronta le due cifre.</li>
+			<li>Modifiche del 12 novembre, chieste dal cliente: Q2 divide “Sposato/a o convivente” e “Separato/a o divorziato/a” in quattro risposte (nella mappa sposati e conviventi restano “Una coppia”); Q24 accetta più risposte; sette schede hanno un titolo nuovo (S04, S05, S07, S09, S14, S16, S17). IO-04 e SA-07 seguono le nuove risposte con lo stesso testo e restano approvate.</li>
 			<li>Le fasce di Q12 si sovrapponevano (800-1.500 e 1.200-1.600) e saltavano 2.500-5.000: ora sono meno di 800 · 800-1.500 · 1.500-2.500 · 2.500-5.000 · più di 5.000.</li>
 			<li>Q14: “Non lo so preferisco non dirlo” è diviso nelle due risposte standard, “Non lo so” e “Preferisco non dirlo”. Q17, Q19 e Q23 offrono anch’esse “Non lo so” (ogni domanda di importo offre entrambe).</li>
 			<li>Q23: le fasce sono scritte 100-250 · 250-500 · 500-1.000, come le altre.</li>

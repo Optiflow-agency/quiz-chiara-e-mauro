@@ -85,11 +85,11 @@ export const PERSONAS: Persona[] = [
 	{
 		name: 'P3 Salvatore',
 		summary:
-			'Genitore separato sui cinquant’anni con due figli ancora a carico e una sola entrata. Le spese fisse e le rate superano le entrate, nessuna riserva.',
+			'Genitore divorziato sui cinquant’anni con due figli ancora a carico e una sola entrata. Le spese fisse e le rate superano le entrate, nessuna riserva.',
 		answers: {
 			S01: {
 				age_band: '46_55',
-				marital: 'separated',
+				marital: 'divorced',
 				children: 'two',
 				children_independent: 'none'
 			},
@@ -131,9 +131,9 @@ export const PERSONAS: Persona[] = [
 	{
 		name: 'P4 Francesca',
 		summary:
-			'Coppia senza figli, buoni redditi, con prodotti della banca, fondi, ETF e un piano di accumulo. Ogni mese mette da parte una cifra importante; proteggere il patrimonio e la pensione tra gli obiettivi.',
+			'Coppia convivente senza figli, buoni redditi, con prodotti della banca, fondi, ETF e un piano di accumulo, scelti in parte da sola e in parte con la banca. Ogni mese mette da parte una cifra importante; proteggere il patrimonio e la pensione tra gli obiettivi.',
 		answers: {
-			S01: { age_band: '36_45', marital: 'married', children: 'no' },
+			S01: { age_band: '36_45', marital: 'cohabiting', children: 'no' },
 			S02: { property: 'both' },
 			S03: { work: 'employee', income_role: 'shared' },
 			S05: { income_household: '5000_10000' },
@@ -146,7 +146,7 @@ export const PERSONAS: Persona[] = [
 				holdings: ['funds', 'insurance', 'etf', 'govt_bonds', 'pension_fund', 'property']
 			},
 			S11: { pac: 'yes', pac_amount: '250_500' },
-			S12: { chosen_by: ['bank'], costs_returns: 'returns_only', last_review: '5_10' },
+			S12: { chosen_by: ['self', 'bank'], costs_returns: 'returns_only', last_review: '5_10' },
 			S13: { purpose: 'vague' },
 			S14: { life_cover: 'other' },
 			S15: { pension_fund: 'open', tfr: 'fund', pension_sim: 'knows' },
