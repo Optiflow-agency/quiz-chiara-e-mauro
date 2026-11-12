@@ -110,7 +110,8 @@ export const messages = {
 			privacyLink: 'Leggi l’informativa privacy',
 			button: 'Invia il codice',
 			codeSent: (email: string) =>
-				`Abbiamo inviato un codice a 6 cifre a ${email}. Scrivilo qui sotto: vale 10 minuti. Se non lo vedi, controlla anche la posta indesiderata.`,
+				`Abbiamo inviato un codice a 6 cifre a ${email}. Scrivilo qui sotto: vale 10 minuti.`,
+			spamHint: 'Non trovi l’email? Controlla anche nella cartella spam (posta indesiderata).',
 			codeLabel: 'Codice a 6 cifre',
 			codeInvalid: 'Inserisci le 6 cifre del codice.',
 			verify: 'Conferma il codice',

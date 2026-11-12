@@ -74,6 +74,7 @@
 
 {#if codeEmail}
 	<p class="intro sent" role="status">{s.codeSent(codeEmail)}</p>
+	<p class="spam">{s.spamHint}</p>
 	{@render failure()}
 	<form method="POST" action="?/verify" novalidate use:enhance={track(() => codeValid)}>
 		<label class="field">
@@ -155,6 +156,17 @@
 		font-size: clamp(17px, 2.4vw, 19px);
 	}
 	.sent {
+		font-weight: 700;
+		color: #fff;
+	}
+	.spam {
+		max-width: 52ch;
+		margin-top: 12px;
+		padding: 12px 16px;
+		border-left: 3px solid var(--accent-on-dark);
+		border-radius: 8px;
+		background: rgba(111, 163, 255, 0.12);
+		font-size: 16px;
 		font-weight: 700;
 		color: #fff;
 	}
