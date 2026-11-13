@@ -75,6 +75,9 @@ describe('form parsing', () => {
 
 	it('bounds the email and the captcha token', () => {
 		expect(emailFromForm(form({ email: ' a@example.com ' }))).toBe('a@example.com');
+		expect(emailFromForm(form({ email: ' Gianni.Rossi@Example.com ' }))).toBe(
+			'gianni.rossi@example.com'
+		);
 		expect(emailFromForm(form({ email: 'nope' }))).toBeNull();
 		expect(emailFromForm(form({ email: `${'a'.repeat(250)}@example.com` }))).toBeNull();
 		expect(captchaFromForm(form({ captcha: 'tok' }))).toBe('tok');
@@ -202,6 +205,13 @@ describe('verifyCode', () => {
 	it('signs in plainly, without merging, when there is no anonymous session', async () => {
 		const { client } = fakeClient();
 		expect(await verifyCode(client, unused, null, 'a@example.com', '123456')).toBeNull();
+	});
+
+	it('confirms the attached address even when the cookie kept other letter case', async () => {
+		const { client, calls } = fakeClient();
+		const typed = { ...anonymous, new_email: 'a@example.com' } as User;
+		expect(await verifyCode(client, unused, typed, 'A@Example.com', '123456')).toBeNull();
+		expect(calls[0].args).toMatchObject({ type: 'email_change' });
 	});
 
 	it('uses the sign-in path when the pending address is a different one', async () => {

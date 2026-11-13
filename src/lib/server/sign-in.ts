@@ -32,9 +32,14 @@ const codePattern = /^\d{6}$/;
 export type SendOutcome = 'rate' | 'send';
 export type VerifyOutcome = 'invalid' | 'rate' | 'send';
 
-/** The trimmed, validated email from a form, or null. */
+/**
+ * The trimmed, lowercased, validated email from a form, or null. Lowercased because Supabase
+ * stores addresses lowercased: "Mario@…" typed on a phone must still match `new_email`.
+ */
 export function emailFromForm(form: FormData): string | null {
-	const email = String(form.get('email') ?? '').trim();
+	const email = String(form.get('email') ?? '')
+		.trim()
+		.toLowerCase();
 	return email.length > 0 && email.length <= maxEmailLength && emailPattern.test(email)
 		? email
 		: null;
@@ -42,7 +47,7 @@ export function emailFromForm(form: FormData): string | null {
 
 /** The email kept in the code-step cookie; anything unexpected counts as "no code step". */
 export function emailFromCookie(raw: string | undefined): string | null {
-	const email = raw ?? '';
+	const email = (raw ?? '').toLowerCase();
 	return email.length > 0 && email.length <= maxEmailLength && emailPattern.test(email)
 		? email
 		: null;
@@ -132,7 +137,7 @@ export async function verifyCode(
 	const fail = (error: { status?: number }): VerifyOutcome =>
 		error.status === 429 ? 'rate' : error.status && error.status >= 500 ? 'send' : 'invalid';
 
-	if (user?.is_anonymous && user.new_email === email) {
+	if (user?.is_anonymous && user.new_email?.toLowerCase() === email.toLowerCase()) {
 		const { error } = await supabase.auth.verifyOtp({ email, token: code, type: 'email_change' });
 		if (error) return fail(error);
 		await supabase.auth.updateUser({ data: { pending_email: null } }); // best effort
